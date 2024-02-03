@@ -1,0 +1,4 @@
+[submodule "lib/tesla_api"]
+	path = lib/tesla_api
+	url = git@github.com:fabianhu/tesla_api.git
+	branch = main
