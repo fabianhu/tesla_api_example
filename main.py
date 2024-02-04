@@ -6,9 +6,6 @@ import lib.tesla_api.tesla_api_2024 as tesla_api
 import lib.logger as logger
 
 def register_developer_account():
-    # register a developer account
-    # this is only needed once, and the client_id and client_secret are stored in the config file
-
     # check, if .dev_registered file exists
     try:
         with open(".dev_registered", "r") as f:
@@ -102,10 +99,10 @@ def register_developer_account():
 
 
 if __name__ == '__main__':
-    # test functions of the library tesla_api here:
 
-    print("Welcome to the guided tour of the tesla_api library\n")
+    print("\nWelcome to the guided tour of the tesla_api library\n\n")
 
+    # register the developer account - it checks if the account is marked as already registered
     register_developer_account()
 
     myTesla = tesla_api.TeslaAPI()
@@ -126,6 +123,7 @@ if __name__ == '__main__':
 
     # get the vehicle data
     vd = myTesla.get_vehicle_data(vin)
+    print("Vehicle data is delivered as a structure:")
     print(vd)
 
     # before sending commands, we have to register the key with the car (once)
