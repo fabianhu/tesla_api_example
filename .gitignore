@@ -1,1 +1,9 @@
 /.idea
+*.pyc
+*.log
+/tesla_tokens.json
+/registerkey.png
+/.temp_token
+/.dev_registered
+/config.py
+
