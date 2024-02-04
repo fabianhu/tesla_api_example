@@ -17,7 +17,7 @@ def register_developer_account():
         pass
 
     print("Registering a developer account")
-    print("Please go to the following URL and register a developer account and your app:")
+    print("Please go to the following URL and register a developer account and your app (Python program):")
     print("https://developer.tesla.com/")
     input("Press [Enter] to continue, when registration is complete or <Ctrl-C> to cancel...")
 
