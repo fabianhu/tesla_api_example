@@ -10,7 +10,7 @@
 - A Tesla car helps a lot
 
 ## What this example will guide you through
-- Set up a developer account at Tesla
+- Set up a developer account at Tesla. See example [tutorial by Shankar](https://shankarkumarasamy.blog/2023/10/29/tesla-developer-api-guide-account-setup-app-creation-registration-and-third-party-authentication-configuration-part-1/)
 - generate a public/private key pair for Tesla Vehicle Commands
 - instruct you, how to host your public key in the `/.well-known` section of your website
 - get a partner authentication token
