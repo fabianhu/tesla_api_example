@@ -81,13 +81,24 @@ def register_developer_account():
     # save the state in a signal file
     with open(".dev_registered", "w") as f:
         f.write("registered")
+    pubkey_from_reg = _r.get("public_key")
+
+    # wait for key press
+    input("Press Enter to continue...")
 
     # bonus step
-    print("Checking the public key...")
-    _r = tesla_api.tesla_partner_check_public_key(partner_token, config.tesla_audience) # results in redirect and 404 for EU !!! (tested 12/2023)
-    print("as of 12/2023, the check_public_key function did not work for EU")
-    print("registration", _r)
+    print("Checking the public key with the Tesla server...")
+    _r = tesla_api.tesla_partner_check_public_key(partner_token, config.tesla_audience)
+    if _r.get("public_key") == pubkey_from_reg:
+        print("The public key is correctly registered with the Tesla server!")
+    else:
+        print("The public key is not correctly registered with the Tesla server!")
+        print("registered:", pubkey_from_reg)
+        print("server:", _r.get("public_key"))
+        exit(1)
 
+    # wait for key press
+    input("Press Enter to continue...")
 
 
 if __name__ == '__main__':
