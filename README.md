@@ -5,7 +5,7 @@
 ## What you need
 - A Tesla account
 - For commands: A registered domain for public key hosting with a valid SSL certificate
-- Until Tesla fixes the registration for hobbyist users, you need a VAT ID number.
+- Until Tesla fixes the registration for hobbyist users, you need a VAT ID number. This does not need to be an exisiting number, it just needs to adhere to the rules for a valid VAT number. Google for what a VAT number looks like in your country/region and use your home adress.
 - A mobile phone with the Tesla app installed for key installation to the car
 - A Tesla car helps a lot
 
