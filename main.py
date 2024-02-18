@@ -4,6 +4,7 @@ import os
 import config
 import lib.tesla_api.tesla_api_2024 as tesla_api
 import lib.logger as logger
+import json
 
 def register_developer_account():
     # check, if .dev_registered file exists
@@ -43,6 +44,7 @@ def register_developer_account():
         print("Generating your keys in the directory 'lib/tesla_api/TeslaKeys'...")
         os.system("openssl ecparam -name prime256v1 -genkey -noout -out lib/tesla_api/TeslaKeys/privatekey.pem")
         os.system("openssl ec -in lib/tesla_api/TeslaKeys/privatekey.pem -pubout -out lib/tesla_api/TeslaKeys/com.tesla.3p.public-key.pem")
+        print("done")
 
     # push the public key to your domain
     print("Please push the public key 'lib/tesla_api/TeslaKeys/com.tesla.3p.public-key.pem' to your domain at the following URL:")
@@ -61,6 +63,9 @@ def register_developer_account():
     print(f"Registering the partner account and domain {config.tesla_redirect_domain}")
     _r = tesla_api.tesla_register_partner_account(partner_token, config.tesla_audience)  # fixme do this for every audience where you expect to register customers
     # already printed from above fn. print("Registration result:", _r)
+    if _r is None:
+        print("Something went wrong during registration, check logging")
+        return
     if _r.get("client_id") == config.tesla_client_id:
         print("Registration was successful!")
     else:
@@ -114,7 +119,8 @@ if __name__ == '__main__':
 
     # get the vehicle info
     vl = myTesla.get_vehicles_list()
-    print(vl)
+    print("Vehicle list from server:")
+    print(json.dumps(vl,indent=4))
 
     vin = vl[0]['vin']
 
@@ -123,8 +129,8 @@ if __name__ == '__main__':
 
     # get the vehicle data
     vd = myTesla.get_vehicle_data(vin)
-    print("Vehicle data is delivered as a structure:")
-    print(vd)
+    print("The following vehicle data is delivered as a structure from server:")
+    print(json.dumps(vd,indent=4))
 
     # before sending commands, we have to register the key with the car (once)
     print("Install the app key to the car using the Tesla app")
@@ -141,7 +147,4 @@ if __name__ == '__main__':
     # send a command to the car
     myTesla.tesla_command("honk", vin)
     # see the source code of the tesla_api library for more commands
-
-
-
 
