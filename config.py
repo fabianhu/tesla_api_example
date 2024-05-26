@@ -17,5 +17,6 @@ tesla_audience = "fleet-api.prd.eu.vn.cloud.tesla.com" # Europe
 tesla_scopes = "user_data vehicle_device_data vehicle_cmds vehicle_charging_cmds energy_device_data energy_cmds"  # match with your application access request
 
 tesla_ble = True # True if commands to be sent via BLE
-tesla_remote = "user@192.168.1.77" # user:host if BLE command should be done on another device via SSH
+#tesla_remote = "user@192.168.1.77" # user:host if BLE command should be done on another device via SSH
+tesla_remote = None # command to be sent from local device
 
