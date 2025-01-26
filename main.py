@@ -125,10 +125,10 @@ if __name__ == '__main__':
     vin = vl[0]['vin']
 
     # wake up the car to be able to get the vehicle data
-    myTesla.cmd_wakeup(vin)
+    myTesla.cmd_wakeup()
 
     # get the vehicle data
-    vd = myTesla.get_vehicle_data(vin)
+    vd = myTesla.get_vehicle_data()
     print("The following vehicle data is delivered as a structure from server:")
     print(json.dumps(vd,indent=4))
 
@@ -145,6 +145,6 @@ if __name__ == '__main__':
         exit()
 
     # send a command to the car
-    myTesla.tesla_command("honk", vin)
+    myTesla.tesla_command("honk")
     # see the source code of the tesla_api library for more commands
 
